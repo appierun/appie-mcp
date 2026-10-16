@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.coderpy-sys/appie",
+  "title": "Appie.run",
+  "description": "Write on-brand articles, train and query website chatbots, and create trackable short links.",
+  "version": "1.0.0",
+  "websiteUrl": "https://appie.run",
+  "repository": {
+    "url": "https://github.com/coderpy-sys/appie-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://appie.run/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token with your Appie.run project API key, e.g. 'Bearer YOUR_APPIE_API_KEY'",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
