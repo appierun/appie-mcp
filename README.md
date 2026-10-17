@@ -6,7 +6,7 @@ Find Reddit threads and draft replies, track LinkedIn profiles and leads, write 
 
 ## Try it free
 
-New Appie.run accounts get **500 free credits**, no card needed. That's enough for about 5 light articles or 500 chatbot replies. Read tools never spend credits.
+New Appie.run accounts get **500 free credits**. That's enough for about 5 light articles or 500 chatbot replies. Read tools never spend credits.
 
 ## Quick start
 
@@ -36,7 +36,7 @@ This repo is also a Grok Build plugin. [`.mcp.json`](.mcp.json) connects to `htt
 export APPIE_API_KEY=esk_your_key
 ```
 
-The plugin ships no code, hooks or skills. Its only network endpoint is `https://appie.run/mcp`, and its only credential is `APPIE_API_KEY`.
+The plugin ships no code or hooks. It includes the five instruction-only agent skills in `skills/` (see [Agent Skills](#agent-skills)), which call the same MCP server. Its only network endpoint is `https://appie.run/mcp`, and its only credential is `APPIE_API_KEY`.
 
 ## What you can do
 
