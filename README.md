@@ -84,6 +84,14 @@ A key can only call tools for apps the person who generated it is allowed to use
 | `author_profile_required` / `writing_sample_required` | Add an author with a writing sample before `create_article` |
 | `not_found` | The link or article isn't in this project |
 
+## Agent Skills
+
+This repo also ships three agent skills in `skills/`: `appie-chatbot`, `appie-article-writer` and `appie-url-shortener`. Install them with:
+
+```bash
+npx skills add appierun/appie-mcp
+```
+
 ## Documentation
 
 Full reference: [appie.run/docs/mcp](https://appie.run/docs/mcp)
