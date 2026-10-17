@@ -6,7 +6,7 @@ Find Reddit threads and draft replies, track LinkedIn profiles and leads, write 
 
 ## Try it free
 
-New Appie.run accounts get **500 free credits**. That's enough for about 5 light articles or 500 chatbot replies. Read tools never spend credits.
+New Appie.run accounts get **500 free credits**, no credit card needed. That's enough for about 5 light articles or 500 chatbot replies. Read tools never spend credits.
 
 ## Quick start
 
