@@ -5,19 +5,21 @@
     "email": "noreply@appie.run"
   },
   "metadata": {
-    "description": "Appie.run agent skills: chatbots, article writer and URL shortener (via the Appie MCP server)",
-    "version": "1.0.0"
+    "description": "Appie.run agent skills: Reddit marketing, LinkedIn growth, article writer, chatbots and URL shortener (via the Appie MCP server)",
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "appie-skills",
-      "description": "Appie.run skills for project chatbots, AI article writing and trackable short links. Requires the Appie MCP server at https://appie.run/mcp.",
+      "description": "Appie.run skills for finding Reddit threads and drafting replies, tracking LinkedIn profiles and leads, AI article writing, project chatbots and trackable short links. Requires the Appie MCP server at https://appie.run/mcp.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/appie-chatbot",
         "./skills/appie-article-writer",
-        "./skills/appie-url-shortener"
+        "./skills/appie-url-shortener",
+        "./skills/appie-reddit-marketing",
+        "./skills/appie-linkedin-growth"
       ]
     }
   ]
