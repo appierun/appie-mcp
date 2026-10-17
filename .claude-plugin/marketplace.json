@@ -1,0 +1,24 @@
+{
+  "name": "appie",
+  "owner": {
+    "name": "Appie.run",
+    "email": "noreply@appie.run"
+  },
+  "metadata": {
+    "description": "Appie.run agent skills: chatbots, article writer and URL shortener (via the Appie MCP server)",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "appie-skills",
+      "description": "Appie.run skills for project chatbots, AI article writing and trackable short links. Requires the Appie MCP server at https://appie.run/mcp.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/appie-chatbot",
+        "./skills/appie-article-writer",
+        "./skills/appie-url-shortener"
+      ]
+    }
+  ]
+}

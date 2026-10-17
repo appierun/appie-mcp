@@ -1,6 +1,7 @@
 ---
 name: appie-article-writer
 description: Write short light articles or long deeply-researched articles with Appie.run Content Writer. Use when the user asks to write an article, generate a blog post, create deeply researched content, draft in an author voice, or check article status. Triggers include write a short article, deeply researched piece, blog post about, generate content in my voice, article status.
+license: MIT
 ---
 
 # Appie Article Writer
@@ -16,26 +17,31 @@ Generation is asynchronous. Always poll status. Never invent article content —
 
 ## Prerequisites (always run first)
 
-1. Call `search_connected_tools` with query `"create article"` or `"list authors"`.
-2. Confirm tools with `remote_name` = `"Appie.run - AI Marketing Stack"` appear.
-3. If none appear, call `request_connector_auth` with:
-   - connectors: `["Appie.run - AI Marketing Stack"]`
-   - reason: brief explanation (e.g. "write a deeply researched article")
-   Then stop and wait for the user to connect.
+This skill needs the Appie.run MCP server connected to your agent.
+
+1. Check whether the Appie tools (e.g. `create_article`, `list_authors`) are already available. If they are, continue.
+2. If not, ask the user to connect the Appie MCP server:
+   - URL: `https://appie.run/mcp` (transport: streamable HTTP)
+   - Header: `Authorization: Bearer <esk_...>` (your Appie.run project API key, starting with `esk_`)
+   - Setup docs for each client: https://appie.run/docs/mcp
+3. New Appie.run accounts get 500 free credits. Never ask the user to paste their key into chat, and never invent one.
+   Stop and wait until the tools are available before continuing.
 
 ## Tool Reference
 
-| Action              | Typical tool name                                      | Cost     | Notes |
+| Action              | Tool name                                              | Cost     | Notes |
 |---------------------|--------------------------------------------------------|----------|-------|
-| List authors        | `appierun_ai_marketing_stack___list_authors`           | free     | Check readiness |
-| Create author       | `appierun_ai_marketing_stack___create_author`          | free     | bio ≥50 chars |
-| Add author sample   | `appierun_ai_marketing_stack___add_author_sample`      | free     | content ≥100 chars or blog_url |
-| Create article      | `appierun_ai_marketing_stack___create_article`         | 100 / 500| charged on generation |
-| Article status      | `appierun_ai_marketing_stack___article_status`         | free     | poll until ready |
-| Get brain           | `appierun_ai_marketing_stack___get_brain`              | free     | brand context (auto-used) |
-| Update brain        | `appierun_ai_marketing_stack___update_brain`           | free     | only if user asks |
+| List authors        | `list_authors`           | free     | Check readiness |
+| Create author       | `create_author`          | free     | bio ≥50 chars |
+| Add author sample   | `add_author_sample`      | free     | content ≥100 chars or blog_url |
+| Create article      | `create_article`         | 100 / 500| charged on generation |
+| Article status      | `article_status`         | free     | poll until ready |
+| Get brain           | `get_brain`              | free     | brand context (auto-used) |
+| Update brain        | `update_brain`           | free     | only if user asks |
 
 ### create_article parameters
+> Note: `create_article` fails with `author_profile_required` until an author exists. Create one with `create_author` first (or check with `list_authors`).
+
 - `topic` (required) — clear description of the article subject
 - `article_type` — `"light"` (default) or `"deeply_researched"`
 - `author_id` (optional integer) — omit to use the project's active author
@@ -81,6 +87,7 @@ Generation is asynchronous. Always poll status. Never invent article content —
 
 ## Error Handling & Edge Cases
 
+- `create_article` fails with `author_profile_required` until the project has an author → check with `list_authors`, create one with `create_author` (bio ≥50 chars), then retry.
 - Author not ready → add sample (≥100 chars) then retry create_article.
 - Insufficient credits → report the exact cost (100 or 500) and stop. Do not start generation.
 - Ambiguous topic → ask one clarifying question before calling create_article.

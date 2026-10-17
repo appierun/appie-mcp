@@ -1,6 +1,7 @@
 ---
 name: appie-chatbot
 description: Create, train, and chat with project chatbots via Appie.run. Use when the user asks to create a chatbot, add knowledge or training data, ask a bot a question, check training status, or list chatbots. Triggers include make a chatbot, train bot on this URL, add knowledge, ask the chatbot, chatbot status, list my bots.
+license: MIT
 ---
 
 # Appie Chatbot
@@ -15,23 +16,26 @@ Create free project chatbots, add knowledge sources, wait for training, then con
 
 ## Prerequisites (always run first)
 
-1. Call `search_connected_tools` with query `"create chatbot"` or `"ask chatbot"`.
-2. Confirm tools with `remote_name` = `"Appie.run - AI Marketing Stack"` appear.
-3. If none appear, call `request_connector_auth` with:
-   - connectors: `["Appie.run - AI Marketing Stack"]`
-   - reason: brief explanation (e.g. "create and train a project chatbot")
-   Then stop and wait for the user to connect.
+This skill needs the Appie.run MCP server connected to your agent.
+
+1. Check whether the Appie tools (e.g. `create_chatbot`, `ask_chatbot`) are already available. If they are, continue.
+2. If not, ask the user to connect the Appie MCP server:
+   - URL: `https://appie.run/mcp` (transport: streamable HTTP)
+   - Header: `Authorization: Bearer <esk_...>` (your Appie.run project API key, starting with `esk_`)
+   - Setup docs for each client: https://appie.run/docs/mcp
+3. New Appie.run accounts get 500 free credits. Never ask the user to paste their key into chat, and never invent one.
+   Stop and wait until the tools are available before continuing.
 
 ## Tool Reference
 
-| Action              | Typical tool name                                      | Cost | Notes |
+| Action              | Tool name                                              | Cost | Notes |
 |---------------------|--------------------------------------------------------|------|-------|
-| Create chatbot      | `appierun_ai_marketing_stack___create_chatbot`         | free | returns chatbot_id |
-| List chatbots       | `appierun_ai_marketing_stack___list_chatbots`          | free | readiness flags |
-| Add knowledge       | `appierun_ai_marketing_stack___add_chatbot_content`    | free | text / url / sitemap / article |
-| Chatbot status      | `appierun_ai_marketing_stack___chatbot_status`         | free | poll until ready |
-| Ask chatbot         | `appierun_ai_marketing_stack___ask_chatbot`            | 1    | session_id for continuity |
-| Get brain           | `appierun_ai_marketing_stack___get_brain`              | free | optional brand context |
+| Create chatbot      | `create_chatbot`         | free | returns chatbot_id |
+| List chatbots       | `list_chatbots`          | free | readiness flags |
+| Add knowledge       | `add_chatbot_content`    | free | text / url / sitemap / article |
+| Chatbot status      | `chatbot_status`         | free | poll until ready |
+| Ask chatbot         | `ask_chatbot`            | 1    | session_id for continuity |
+| Get brain           | `get_brain`              | free | optional brand context |
 
 ### create_chatbot parameters
 - `name` (required)

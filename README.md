@@ -92,6 +92,13 @@ This repo also ships three agent skills in `skills/`: `appie-chatbot`, `appie-ar
 npx skills add appierun/appie-mcp
 ```
 
+Or in Claude Code:
+
+```
+/plugin marketplace add appierun/appie-mcp
+/plugin install appie-skills@appie
+```
+
 ## Documentation
 
 Full reference: [appie.run/docs/mcp](https://appie.run/docs/mcp)
