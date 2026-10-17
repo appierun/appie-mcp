@@ -28,6 +28,16 @@ New Appie.run accounts get **500 free credits**, no card needed. That's enough f
 
 The same config is in [`examples/mcp-config.json`](examples/mcp-config.json). Never commit a real key.
 
+## Grok Build plugin
+
+This repo is also a Grok Build plugin. [`.mcp.json`](.mcp.json) connects to `https://appie.run/mcp` and sends your key from the `APPIE_API_KEY` environment variable as a Bearer token. Set it before starting Grok:
+
+```bash
+export APPIE_API_KEY=esk_your_key
+```
+
+The plugin ships no code, hooks or skills. Its only network endpoint is `https://appie.run/mcp`, and its only credential is `APPIE_API_KEY`.
+
 ## What you can do
 
 - **Write articles in your voice.** Start a light (~500 words) or deeply researched (~3,000 words) article using an author profile trained on your writing samples, then check its status until the draft is ready.

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "appie": {
+      "type": "http",
+      "url": "https://appie.run/mcp",
+      "headers": {
+        "Authorization": "Bearer ${APPIE_API_KEY}"
+      }
+    }
+  }
+}

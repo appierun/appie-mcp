@@ -1,0 +1,16 @@
+{
+  "name": "appie",
+  "version": "1.0.0",
+  "description": "Appie.run hosted MCP server: write articles in your brand voice, read and update brand context, train and query website chatbots, and create trackable short links. Requires an Appie.run project API key in APPIE_API_KEY.",
+  "author": {
+    "name": "Appie.run",
+    "url": "https://github.com/appierun"
+  },
+  "homepage": "https://appie.run",
+  "license": "MIT",
+  "keywords": [
+    "appie",
+    "appie.run",
+    "appie mcp"
+  ]
+}
